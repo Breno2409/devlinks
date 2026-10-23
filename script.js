@@ -1,16 +1,12 @@
-function toggleMode() {
+const themeToggle = document.querySelector("#switch")
+
+themeToggle.addEventListener("click", () => {
   const html = document.documentElement
-  html.classList.toggle("light")
+  const isLightMode = html.classList.toggle("light")
 
-  // Pega a tag img do perfil
-  const img = document.querySelector("#profile img")
-
-  // Substitui a imagem de acordo com o modo ativado
-  if (html.classList.contains("light")) {
-    img.setAttribute("src", "https://github.com/seu-usuario.png")
-    img.setAttribute("alt", "Sua foto em modo claro")
-  } else {
-    img.setAttribute("src", "https://github.com/seu-usuario.png")
-    img.setAttribute("alt", "Sua foto em modo escuro")
-  }
-}
+  themeToggle.setAttribute("aria-pressed", String(isLightMode))
+  themeToggle.setAttribute(
+    "aria-label",
+    isLightMode ? "Ativar tema escuro" : "Ativar tema claro"
+  )
+})
